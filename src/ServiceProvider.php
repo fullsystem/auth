@@ -15,7 +15,13 @@ class ServiceProvider extends FullsystemProvider
      */
     public function boot()
     {
+        // Load migrations
+        $this->loadMigrationsFrom(__DIR__ . '/Data/Migrations');
+
+        // Load views
         $this->loadViewsFrom(__DIR__ . '/Ui/Web/Views', 'auth');
+
+        // Load routes
         $this->loadWebRouteFrom(__NAMESPACE__);
     }
 

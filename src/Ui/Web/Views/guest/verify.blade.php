@@ -1,6 +1,6 @@
 @extends('ui::guest')
 
-@section('page-title', 'Email Verification')
+@section('page-title', __('Email Verification'))
 @section('page-description', __('Verify Your Email Address.'))
 
 @section('content')
@@ -14,6 +14,6 @@
     {{ __('If you did not receive the email') }},
     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
         @csrf
-        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+        <button type="submit" class="btn btn-link btn-lg p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
     </form>
 @endsection

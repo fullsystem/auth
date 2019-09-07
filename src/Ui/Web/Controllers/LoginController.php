@@ -33,6 +33,6 @@ class LoginController extends WebController
      */
     public function showLoginForm()
     {
-        return view('auth::login');
+        return view('auth::guest.login');
     }
 }

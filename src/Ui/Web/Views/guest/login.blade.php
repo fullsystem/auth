@@ -1,6 +1,6 @@
 @extends('ui::guest')
 
-@section('page-title', 'Login')
+@section('page-title', __('Login'))
 @section('page-description', __('Welcome! Please fill email and password to access your account.'))
 
 @section('content')

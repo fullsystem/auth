@@ -1,6 +1,6 @@
 @extends('ui::guest')
 
-@section('page-title', 'Reset your password')
+@section('page-title', __('Reset your password'))
 @section('page-description', __("Don't worry! Please fill email and we will email you a password reset link."))
 
 @section('content')
@@ -27,9 +27,9 @@
             </div>
         </div>
 
-        <hr class="mt-3" />
+        <hr class="mt-3 mb-3" />
 
-        <div class="row mb-4 mt-1">
+        <div class="row">
             <div class="col-12 text-right">
                 <a href="{{ route('login') }}">{{ __('Back to login') }}</a>
             </div>

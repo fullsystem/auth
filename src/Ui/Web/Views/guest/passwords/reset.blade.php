@@ -1,6 +1,6 @@
 @extends('ui::guest')
 
-@section('page-title', 'Reset your password')
+@section('page-title', __('Reset your password'))
 @section('page-description', __("Almost there! Please fill password and we will email you a password reset link."))
 
 @section('content')
