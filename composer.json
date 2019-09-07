@@ -1,0 +1,27 @@
+{
+  "name": "fullsystem/auth",
+  "authors": [
+    {
+      "name": "rdehnhardt",
+      "email": "renatotkd@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Fullsystem\\Auth\\": "src/"
+    }
+  },
+  "require": {
+    "laravel/framework": "^6.0",
+    "fullsystem/core": "dev-master",
+    "fullsystem/ship": "dev-master",
+    "fullsystem/ui": "dev-master"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Fullsystem\\Auth\\ServiceProvider"
+      ]
+    }
+  }
+}
