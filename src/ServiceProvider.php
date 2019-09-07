@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Gate;
 use Fullsystem\Core\Loaders\ContainerLoader;
 use Fullsystem\Core\Loaders\RoutesLoader;
 use Fullsystem\Core\Providers\FullsystemProvider;
+use Illuminate\Support\Facades\URL;
 
 class ServiceProvider extends FullsystemProvider
 {
@@ -36,27 +37,5 @@ class ServiceProvider extends FullsystemProvider
 
         // Register Polices
         $this->registerPolicies();
-    }
-
-    /**
-     * Register the application's policies.
-     *
-     * @return void
-     */
-    public function registerPolicies()
-    {
-        foreach ($this->policies as $key => $value) {
-            Gate::policy($key, $value);
-        }
-    }
-
-    /**
-     * Get the policies defined on the provider.
-     *
-     * @return array
-     */
-    public function policies()
-    {
-        return $this->policies;
     }
 }
