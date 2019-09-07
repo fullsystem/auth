@@ -1,7 +1,7 @@
 @extends('ui::guest')
 
 @section('page-title', 'Login')
-@section('page-description', __('Welcome! Please fill email and password to sign in in your account.'))
+@section('page-description', __('Welcome! Please fill email and password to access your account.'))
 
 @section('content')
     <form method="POST" action="{{ route('login') }}" autocomplete="off">
@@ -32,7 +32,7 @@
 
         <div class="row">
             <div class="col-12">
-                <button type="submit" class="btn btn-secondary btn-lg btn-block btn-flat">{{ __('Sign In') }}</button>
+                <button type="submit" class="btn btn-secondary btn-lg btn-block">{{ __('Sign In') }}</button>
             </div>
         </div>
     </form>

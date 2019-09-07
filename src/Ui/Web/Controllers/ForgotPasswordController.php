@@ -18,4 +18,14 @@ class ForgotPasswordController extends WebController
     {
         $this->middleware('guest');
     }
+    
+    /**
+     * Display the form to request a password reset link.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLinkRequestForm()
+    {
+        return view('auth::guest.passwords.email');
+    }
 }

@@ -25,7 +25,7 @@ class LoginController extends WebController
     {
         $this->middleware('guest')->except('logout');
     }
-
+    
     /**
      * Show the application's login form.
      *
@@ -33,6 +33,6 @@ class LoginController extends WebController
      */
     public function showLoginForm()
     {
-        return view('auth::guest.login');
+        return view('auth::login');
     }
 }

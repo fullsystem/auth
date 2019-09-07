@@ -3,6 +3,7 @@
 namespace Fullsystem\Auth\Ui\Web\Controllers;
 
 use Fullsystem\Auth\Models\User;
+use Fullsystem\Auth\Ui\Web\Requests\Register;
 use Fullsystem\Ship\Parents\Controllers\WebController;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -30,27 +31,23 @@ class RegisterController extends WebController
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Show the application registration form.
      *
-     * @param array $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return \Illuminate\Http\Response
      */
-    protected function validator(array $data)
+    public function showRegistrationForm()
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        return view('auth::guest.register');
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
+     * @param Register $register
      * @param array $data
      * @return User
      */
-    protected function create(array $data)
+    protected function create(Register $register, array $data)
     {
         return User::create([
             'name' => $data['name'],

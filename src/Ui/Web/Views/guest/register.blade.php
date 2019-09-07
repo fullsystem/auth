@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('ui::guest')
+
+@section('page-title', 'Login')
+@section('page-description', __("It's simple! Just fill the fields below to create your account and sign in."))
 
 @section('content')
 <div class="container">

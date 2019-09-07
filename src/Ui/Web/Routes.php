@@ -3,16 +3,25 @@
 namespace Fullsystem\Auth\Ui\Web;
 
 use Illuminate\Contracts\Routing\Registrar;
+use Illuminate\Support\Facades\Config;
 
 class Routes
 {
     /**
-     * @param \Illuminate\Contracts\Routing\Registrar $router
+     * @param Registrar $router
      */
     public function map(Registrar $router)
     {
         $this->mapLoginRoutes($router);
         $this->mapResetRoutes($router);
+
+        if (Config::get('auth.register')) {
+            $this->mapRegisterRoutes($router);
+        }
+
+        if (Config::get('auth.verify')) {
+            $this->mapVerificationRoutes($router);
+        }
     }
 
     /**
@@ -22,8 +31,8 @@ class Routes
      */
     private function mapLoginRoutes($router)
     {
-        $router->middleware('guest')->get('login', 'LoginController@showLoginForm')->name('login');
-        $router->middleware('guest')->post('login', 'LoginController@login');
+        $router->get('login', 'LoginController@showLoginForm')->name('login');
+        $router->post('login', 'LoginController@login');
 
         $router->post('logout', 'LoginController@logout')->name('logout');
     }
@@ -35,10 +44,33 @@ class Routes
      */
     private function mapResetRoutes($router)
     {
-        $router->middleware('guest')->get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
-        $router->middleware('guest')->get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+        $router->get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+        $router->get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
 
-        $router->middleware('guest')->post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-        $router->middleware('guest')->post('password/reset', 'ResetPasswordController@reset')->name('password.update');
+        $router->post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+        $router->post('password/reset', 'ResetPasswordController@reset')->name('password.update');
+    }
+
+    /**
+     * Map reset routes
+     *
+     * @param $router
+     */
+    private function mapRegisterRoutes($router)
+    {
+        $router->get('register', 'RegisterController@showRegistrationForm')->name('register');
+        $router->post('register', 'RegisterController@register');
+    }
+
+    /**
+     * Map reset routes
+     *
+     * @param $router
+     */
+    private function mapVerificationRoutes($router)
+    {
+        $router->get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+        $router->get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
+        $router->post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
     }
 }
