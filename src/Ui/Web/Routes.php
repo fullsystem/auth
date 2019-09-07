@@ -32,7 +32,7 @@ class Routes
     private function mapLoginRoutes($router)
     {
         $router->get('login', 'LoginController@showLoginForm')->name('login');
-        $router->post('login', 'LoginController@login');
+        $router->post('login', 'LoginController@login')->name('login');
 
         $router->post('logout', 'LoginController@logout')->name('logout');
     }
@@ -69,8 +69,8 @@ class Routes
      */
     private function mapVerificationRoutes($router)
     {
-        $router->get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-        $router->get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
-        $router->post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+        $router->get('email/verify', 'VerificationController@show')->name('verification.notice');
+        $router->get('email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify');
+        $router->post('email/resend', 'VerificationController@resend')->name('verification.resend');
     }
 }
